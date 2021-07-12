@@ -20,14 +20,14 @@ public class PutServlet extends HttpServlet {
         String sid = request.getParameter("id");
         int id = Integer.parseInt(sid);
 
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-
         Employee employee = new Employee();
         employee.setId(id);
-        employee.setName(name);
-        employee.setEmail(email);
+        employee.setName(request.getParameter("name"));
+        employee.setEmail(request.getParameter("email"));
         employee.setCountry(request.getParameter("country"));
+        employee.setDateOfBirth(request.getParameter("birthdate"));
+        employee.setSpecialty(request.getParameter("specialty"));
+
 
         int status = EmployeeRepository.update(employee);
 
@@ -39,3 +39,4 @@ public class PutServlet extends HttpServlet {
         out.close();
     }
 }
+
